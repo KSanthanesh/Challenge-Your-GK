@@ -1,87 +1,107 @@
+# import random
+import time
 print("***************************")
 print("*                         *")
 print("*   CHALLENGE YOUR GK     *")
 print("*                         *")
 print("***************************")
+time.sleep(1)
 # Welcome message
 print("\nWelcome to my computer quiz!\n")
 
+time.sleep(0.5)
+while True:
+    name = input("Please Enter your Name: ")
+    if not name:
+        print("please Enter your Name before start the game: ")
+    else:
+        print("Hi " + name + " Let's Start the Game")
+        break
 
-def new_game():
-    guesses = []
-    correct_guesses = 0
+time.sleep(1)
+
+
+def start():
+    choices = []
+    correct_choices = 0
     question_num = 1
 
     for key in questions:
-        print("------------------------------")
+        print("----------------------------------------------------")
         print(key)
         for i in options[question_num - 1]:
             print(i)
-        guess = input("Enter(A,B,C or D): ")
-        guess = guess.upper()
-        guesses.append(guess)
+        choice = input("Enter Your Answer (A,B,C or D): ")
+        choice = choice.upper()
+        choices.append(choice)
 
-        correct_guesses += check_answer(questions.get(key), guess)
+        correct_choices += check_answer(questions.get(key), choice)
         question_num += 1
-    display_score(correct_guesses, guesses)
+    display_score(correct_choices, choices)
 
 
-def check_answer(answer, guess):
+time.sleep(1)
 
-    if answer == guess:
-        print("Correct!")
+
+def check_answer(answer, choice):
+
+    if answer == choice:
+        print("\nWell done! Correct Answer\n")
         return 1
     else:
-        print("Wrong!")
+        print("\nWrong Answer\n")
         return 0
 
 
-def display_score(correct_guesses, guesses):
+def display_score(correct_choices, choices):
     print("----------------------------")
     print("Results")
     print("----------------------------")
-    print("Answers:", end="")
+    print("Answers: ", end="\n")
     for i in questions:
         print(questions.get(i), end="")
         print()
-    print("guesses:", end="")
-    for i in guesses:
+    print("Choices: ", end="\n")
+    for i in choices:
         print(i, end="")
         print()
-    score = int(correct_guesses / len(questions) * 100)
-    print("Your Score is : " + str(score) + "%")
+    score = int(correct_choices / len(questions) * 100)
+    print("Your Score is : " + str(score) + "%\n")
+
+
+time.sleep(1)
 
 
 def play_again():
     response = input("Do you want to Play again:(yes or no): ")
     response = response.upper()
-    if response == "YES":
+    if response in ("Y", "YES"):
         return True
     else:
         return False
 
 
 questions = {
-    "Which Country is Known as the 'Land of Raising Sun'?": "A",
-    "Which Country is known as the 'Playground of Europe'?": "C",
-    "What percentage of the human body is water?": "B",
-    "What is the hottest chilli pepper in the world?": "A",
-    "Steel is more elastic than Rubber because:": "C",
+    "1. Which Country is Known as the 'Land of Raising Sun'?": "A",
+    "2. Which Country is known as the 'Playground of Europe'?": "C",
+    "3. What percentage of the human body is water?": "B",
+    "4. What is the hottest chilli pepper in the world?": "A",
+    "5. Steel is more elastic than Rubber because:": "C",
 }
 
 options = [
-    ["A. Japan", "B. New Zealand", "C. Fiji", "D. China"],
-    ["A. Austria", "B. holland", "C. Switzerland", "D. Italy"],
-    ["A. 75%", "B. 60%", "C. 69%", "D. 65%"],
+    ["A. Japan", "B. New Zealand", "C. Fiji", "D. China\n"],
+    ["A. Austria", "B. holland", "C. Switzerland", "D. Italy\n"],
+    ["A. 75%", "B. 60%", "C. 69%", "D. 65%\n"],
     ["A.The Carolina Reaper", "B.Ghost Pepper", "C.Pot Barrackpore",
-     "D.Pot Red"],
+     "D.Pot Red\n"],
     ["A.its density is high", "B.it is a metal",
      "C.ratio of stress to strain is more",
-     "D. ratio of stress to strain is less"]]
+     "D. ratio of stress to strain is less\n"]]
 
-new_game()
+start()
 
 while play_again():
-    new_game()
+    start()
 
-print("Byeeee")
+print("Thanks for playing this game!")
