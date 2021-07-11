@@ -35,6 +35,11 @@ def start():
         choice = choice.upper()
         choices.append(choice)
 
+        if choice == ("A", "B", "C", "D", "a", "b", "c,", "d"):
+            break
+        else:
+            print("please Enter valid option")
+
         correct_choices += check_answer(questions.get(key), choice)
         question_num += 1
     display_score(correct_choices, choices)
@@ -44,7 +49,6 @@ time.sleep(1)
 
 
 def check_answer(answer, choice):
-
     if answer == choice:
         print("\nWell done! Correct Answer\n")
         return 1
@@ -82,21 +86,21 @@ def play_again():
 
 
 questions = {
-    "1. Which Country is Known as the 'Land of Raising Sun'?": "A",
-    "2. Which Country is known as the 'Playground of Europe'?": "C",
-    "3. What percentage of the human body is water?": "B",
-    "4. What is the hottest chilli pepper in the world?": "A",
-    "5. Steel is more elastic than Rubber because:": "C",
+    "1. Which Country is Known as the 'Land of Raising Sun'?\n": "A",
+    "2. Which Country is known as the 'Playground of Europe'?\n": "C",
+    "3. What percentage of the human body is water?\n": "B",
+    "4. What is the hottest chilli pepper in the world?\n": "A",
+    "5. Steel is more elastic than Rubber because:\n": "C",
 }
 
 options = [
     ["A. Japan", "B. New Zealand", "C. Fiji", "D. China\n"],
     ["A. Austria", "B. holland", "C. Switzerland", "D. Italy\n"],
     ["A. 75%", "B. 60%", "C. 69%", "D. 65%\n"],
-    ["A.The Carolina Reaper", "B.Ghost Pepper", "C.Pot Barrackpore",
-     "D.Pot Red\n"],
-    ["A.its density is high", "B.it is a metal",
-     "C.ratio of stress to strain is more",
+    ["A. The Carolina Reaper", "B. Ghost Pepper", "C. Pot Barrackpore",
+     "D. Pot Red\n"],
+    ["A. its density is high", "B. it is a metal",
+     "C. ratio of stress to strain is more",
      "D. ratio of stress to strain is less\n"]]
 
 start()
